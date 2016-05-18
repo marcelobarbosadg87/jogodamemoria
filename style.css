@@ -1,0 +1,61 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+main {
+  margin: 0 auto;
+  margin-top: 5vh;
+  height: auto;
+  display: table;
+  width: 50%;
+  padding: 1rem;
+  background: blue;
+}
+
+.matriz {
+  width: 36rem;
+  height: 36rem;
+  margin: 0 auto;
+  background: gray;
+  display: table;
+}
+
+.linha {
+  height: 10rem;
+}
+ul {
+  margin: 0.5rem auto;
+  padding:0;
+  display: table;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-table;
+}
+
+.card {
+  background: yellow;
+  width: 10rem ;
+  height: 10rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px orange;
+  transform: scale(1) rotateY(0);
+  -moz-transform: rotateY(0);
+  -web-kit-transform:  rotateY(0);
+  transition: all 0.5s;
+}
+
+.card:hover {
+  background: purple;
+  transform: scale(1.1) rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -web-kit-transform:  rotateY(-180deg);
+  transition: all 0.5s;
+
+}
