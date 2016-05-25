@@ -46,7 +46,7 @@ li {
 }
 
 .card-front {
-  background: url('./assets/images/cards/back.svg');
+  background: url('/assets/images/cards/back.svg');
   background-size: 100%;
   width: 100%;
   height: 100%;
