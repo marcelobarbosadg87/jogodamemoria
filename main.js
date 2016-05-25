@@ -27,7 +27,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
 
 
 
-
+/*
 var matrizJogo = [
 
 
@@ -43,9 +43,9 @@ var matrizJogo = [
   var a33 = matrizBase([2][2]); // acessa um item na matriz na posição a33
 
   var matrizBase = [
-   [1,2,3] /* a11(0,0), a12(0,1), a13(0,2) */
-  ,[4,5,6] /* a21(1,0), a22(1,1), a23(1,2) */
-  ,[7,8,9] /* a31(2,0), a32(2,1), a33(2,2) */
+   [1,2,3]
+  ,[4,5,6]
+  ,[7,8,9]
   ];
 
 ];
@@ -57,3 +57,96 @@ function distribuiMatriz(){
 clickAlert function(){
   alert(a11,a12,a13,a21,a22,a23,a31,a32,a33); // seleciona o elemento M ixj
 }
+*/
+;(function($){
+  
+  var linhas            = 3;
+  var colunas           = 4;
+  var default_card_path = '/assets/images/cards';
+
+  var App = {
+    init: function() {
+      console.log("Game App started");
+      this.buildFrontCards( function() {
+        App.sortItems(function(cards_sorted) {
+          App.buildBackCards(cards_sorted);
+        });
+      });
+      this.card_events_listener();
+    },
+    buildFrontCards: function( cb ) {
+      console.log("Building Front Cards...");
+      if( (linhas * colunas) % 2 == 0  ) {
+        var html;
+        var card_id = 0;
+        for( var i = 0; i < linhas; i++ ) {
+          html = '<div class="linha" data-linha="'+ i +'">';
+            html += '<ul>';
+            for( var j = 0; j < colunas; j++ ) {
+                html += '<li class="card" data-id="'+ card_id +'">';
+                  html += '<div class="card-front front">';
+                html += '</li>';
+                card_id++;
+            }
+            html += '</ul>';
+          html += '</div>';
+          $( '.matriz' ).append( html );
+        }
+        return cb();
+      }
+      alert("O jogo não pode ser executado com estes parâmetros");
+    },
+    sortItems: function(cb) {
+      console.log("Sorting items...");
+      var combinations = ( linhas * colunas )/2;
+      var itens = [ 
+        'A.svg',
+        'B.svg',
+        'C.svg',
+        'D.svg',
+        'E.svg',
+        'F.svg',
+        'G.svg',
+        'H.svg',
+        'I.svg',
+        'J.svg',
+      ];
+      var new_items = [];
+      
+      for( var i = 0; i < combinations; i++ ) {
+        new_items.push(itens[i]);
+        new_items.push(itens[i]);
+      }
+      this.shuffleArray( new_items );
+      return cb(new_items);
+    },
+    buildBackCards: function( cards_sorted ) {
+      console.log("Building Back Cards...");
+      $.each( cards_sorted, function(i, val) {
+        console.log(i);
+        var back = '<div class="card-back back"">';
+              back += '<img src="'+ default_card_path + '/' + val +'"></img>';
+        back    += "</div>";
+        $( '[data-id="'+i+'"]' ).append(back);
+      });
+    },
+    shuffleArray: function (array) {
+      for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      }
+      return array;
+    },
+    card_events_listener: function() {
+      $( '.card' ).flip({
+        axis: "y",
+        reverse: false,
+      });
+    }
+  };
+  
+  App.init();
+
+})(jQuery)
