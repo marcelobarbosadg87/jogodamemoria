@@ -83,7 +83,7 @@ clickAlert function(){
           html = '<div class="linha" data-linha="'+ i +'">';
             html += '<ul>';
             for( var j = 0; j < colunas; j++ ) {
-                html += '<li class="card" data-id="'+ card_id +'">';
+                html += '<li class="card" data-id="'+ card_id +'" data-match="false" data-opened="false">';
                   html += '<div class="card-front front">';
                 html += '</li>';
                 card_id++;
@@ -123,7 +123,6 @@ clickAlert function(){
     buildBackCards: function( cards_sorted ) {
       console.log("Building Back Cards...");
       $.each( cards_sorted, function(i, val) {
-        console.log(i);
         var back = '<div class="card-back back"">';
               back += '<img src="'+ default_card_path + '/' + val +'"></img>';
         back    += "</div>";
@@ -132,7 +131,7 @@ clickAlert function(){
     },
     shuffleArray: function (array) {
       for (var i = array.length - 1; i > 0; i--) {
-          var j = Math.floor(Math.random() * (i + 1));
+          var j    = Math.floor(Math.random() * (i + 1));
           var temp = array[i];
           array[i] = array[j];
           array[j] = temp;
@@ -144,6 +143,37 @@ clickAlert function(){
         axis: "y",
         reverse: false,
       });
+      $( 'body' ).on( 'click', '.card', function() {
+          var opened = $( this ).attr( 'data-opened' );
+          if(opened == "true") {
+            $( this ).flip(true);
+            return false;
+          }
+          if( opened == "none" || opened == "true" ) return false;
+          $( this ).attr( 'data-opened', "true" );
+          if( $(this).attr('data-match') == "false" ) {
+            if( $('[data-opened="true"]').size() == 2  && App.checkCards() ) { //Se n de abertas for 1 e forem iguais
+              alert("Parabéns, você acertou!");
+              $( '[data-opened="true"]' ).attr( 'data-match','true' );
+              $( '[data-opened="true"]' ).off();
+              $( '[data-opened="true"]' ).attr( 'data-opened','none' );
+              return true;
+            }
+            if( $('[data-opened="true"]').size() == 2 ) {
+              var card = this;
+              setTimeout(function(){ $( '[data-opened="true"]' ).flip( false ); $( '.card' ).attr( 'data-opened', "false" ); }, 1500);
+              return false;
+            }
+            if( $('[data-opened="true"]').size() > 2 ) {
+              $( this ).flip( false ); $( this ).attr( 'data-opened', "false" );
+            }
+          }
+      });
+    },
+    checkCards: function() {
+      var elements = $( '[data-opened="true"]' );
+      return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
+      //if( elements[0] )
     }
   };
   
