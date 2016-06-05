@@ -25,44 +25,11 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
 
 // Funções
 
-
-
-/*
-var matrizJogo = [
-
-
-  //variaveis de cada posição da matriz
-  var a11 = matrizBase([0][0]); // acessa um item na matriz na posição a11
-  var a12 = matrizBase([0][1]); // acessa um item na matriz na posição a12
-  var a13 = matrizBase([0][2]); // acessa um item na matriz na posição a13
-  var a21 = matrizBase([1][0]); // acessa um item na matriz na posição a21
-  var a22 = matrizBase([1][1]); // acessa um item na matriz na posição a22
-  var a23 = matrizBase([1][2]); // acessa um item na matriz na posição a23
-  var a31 = matrizBase([2][0]); // acessa um item na matriz na posição a31
-  var a32 = matrizBase([2][1]); // acessa um item na matriz na posição a32
-  var a33 = matrizBase([2][2]); // acessa um item na matriz na posição a33
-
-  var matrizBase = [
-   [1,2,3]
-  ,[4,5,6]
-  ,[7,8,9]
-  ];
-
-];
-
-function distribuiMatriz(){
-
-
-};
-clickAlert function(){
-  alert(a11,a12,a13,a21,a22,a23,a31,a32,a33); // seleciona o elemento M ixj
-}
-*/
 ;(function($){
-  
+
   var linhas            = 3;
   var colunas           = 4;
-  var default_card_path = '/assets/images/cards';
+  var default_card_path = 'assets/images/cards';
 
   var App = {
     init: function() {
@@ -70,6 +37,7 @@ clickAlert function(){
       this.buildFrontCards( function() {
         App.sortItems(function(cards_sorted) {
           App.buildBackCards(cards_sorted);
+          App.endGame();
         });
       });
       this.card_events_listener();
@@ -99,20 +67,20 @@ clickAlert function(){
     sortItems: function(cb) {
       console.log("Sorting items...");
       var combinations = ( linhas * colunas )/2;
-      var itens = [ 
-        'A.svg',
-        'B.svg',
-        'C.svg',
-        'D.svg',
-        'E.svg',
-        'F.svg',
-        'G.svg',
-        'H.svg',
-        'I.svg',
-        'J.svg',
+      var itens = [
+        'A.png',
+        'B.png',
+        'C.png',
+        'D.png',
+        'E.png',
+        'F.png',
+        'G.png',
+        'H.png',
+        'I.png',
+        'J.png',
       ];
       var new_items = [];
-      
+
       for( var i = 0; i < combinations; i++ ) {
         new_items.push(itens[i]);
         new_items.push(itens[i]);
@@ -167,6 +135,11 @@ clickAlert function(){
             if( $('[data-opened="true"]').size() > 2 ) {
               $( this ).flip( false ); $( this ).attr( 'data-opened', "false" );
             }
+
+            if($('[data-opened="true"]').size() == $(li).lenght){
+              alert("Fim do Jogo");
+              
+            }
           }
       });
     },
@@ -174,9 +147,19 @@ clickAlert function(){
       var elements = $( '[data-opened="true"]' );
       return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
       //if( elements[0] )
+    },
+
+    endGame: function () {
+      var elements = $( '[data-opened="true"]' );
+      return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
+
+      if (elements == 6) {
+        alert('funciona');
+        console.log('Fim de jogo vc ganhou!');
+      }
     }
   };
-  
+
   App.init();
 
 })(jQuery)
