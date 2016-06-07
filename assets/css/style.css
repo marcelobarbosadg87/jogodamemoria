@@ -30,7 +30,8 @@ main {
   margin: 0 auto;
   display: table;
   background: #f2f0e4;
-  border-radius: 1rem;
+  border-radius: 7px;
+  max-width: 490px;
 }
 
 .linha {
@@ -125,7 +126,6 @@ li {
     margin: 0 5%;
     display: table;
     background: #f2f0e4;
-    border-radius: 1rem;
     display: table;
   }
 
