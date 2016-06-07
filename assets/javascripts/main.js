@@ -84,7 +84,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
         new_items.push(itens[i]);
         new_items.push(itens[i]);
       }
-      //this.shuffleArray( new_items );
+      this.shuffleArray( new_items );
       return cb(new_items);
     },
     buildBackCards: function( cards_sorted ) {
@@ -120,6 +120,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
           $( this ).attr( 'data-opened', "true" );
           if( $(this).attr('data-match') == "false" ) {
             if( $('[data-opened="true"]').size() == 2  && App.checkCards() ) { //Se n de abertas for 1 e forem iguais
+              $( ".moves-quantity" ).html( parseInt( $( ".moves-quantity" ).html() ) + 1 );
               App.itsAMatch();
               $( '[data-opened="true"]' ).attr( 'data-match','true' );
               $( '[data-opened="true"]' ).off();
@@ -130,6 +131,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
               return true;
             }
             if( $('[data-opened="true"]').size() == 2 ) {
+                $( ".moves-quantity" ).html( parseInt( $( ".moves-quantity" ).html() ) + 1 );
               var card = this;
               setTimeout(function(){ $( '[data-opened="true"]' ).flip( false ); $( '.card' ).attr( 'data-opened', "false" ); }, 1500);
               return false;
