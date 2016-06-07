@@ -172,3 +172,10 @@ li {
 .gitlogo img {
   width: 40px;
 }
+
+.restart-bt {
+  text-align: center !important;
+  padding-top: 5px;
+  border-top: 1px solid #3F5F80;
+  font-size: 13px;
+}

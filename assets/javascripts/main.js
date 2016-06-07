@@ -40,6 +40,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
         });
       });
       this.card_events_listener();
+      this.restart_bt_listener();
     },
     buildFrontCards: function( cb ) {
       console.log("Building Front Cards...");
@@ -151,6 +152,13 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
     },
     itsAMatch: function() {
 
+    },
+    restart_bt_listener: function() {
+        $( 'body' ).on( 'click', '.restart-bt', function() {
+            $( ".moves-quantity" ).html( '0' );
+            $( '.matriz' ).html('');
+            App.init();
+        });
     }
   };
 
