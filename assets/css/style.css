@@ -1,0 +1,174 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background: url('../images/bg.jpg');
+  background-repeat: repeat;
+  margin: 0;
+}
+
+.logo {
+  width: 40%;
+  margin: 0 30%;
+  margin-bottom: 1rem;
+}
+
+
+main {
+  margin: 0 25%;
+  margin-top: 5vh;
+  height: auto;
+  display: table;
+  width: 50%;
+  padding: 1rem;
+
+}
+
+.game-table {
+  width: 31rem;
+  height: 22rem;
+  margin: 0 auto;
+  display: table;
+  background: #f2f0e4;
+  border-radius: 7px;
+  max-width: 490px;
+}
+
+.linha {
+  height: 6rem;
+}
+ul {
+  margin: 0.5rem auto;
+  padding:0;
+  display: table;
+
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-table;
+}
+
+.card {
+  width: 6rem ;
+  height: 6rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.card-front {
+  background: url('../images/cards/back.png');
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.back {
+
+}
+
+.card-back img {
+  width: 100%;
+}
+
+.game-table.game-infos {
+    height: 10vh;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 0;
+
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 0;
+
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 1rem;
+
+  }
+}
+@media only screen and (max-width: 425px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 0;
+
+  }
+
+  .game-table {
+    width: 90%;
+    height: 13rem;
+    margin: 0 5%;
+    display: table;
+    background: #f2f0e4;
+    display: table;
+  }
+
+  .logo {
+    width: 80%;
+    margin: 0 10%;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    width: 3rem ;
+    height: 3rem;
+    margin: 0.2rem;
+    cursor: pointer;
+  }
+
+  .linha {
+    height: 3rem;
+  }
+}
+
+.game-infos table {
+    width: 100%;
+    color: #3F5669;
+    font-size: 14px;
+    padding: 6px;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+}
+
+.game-infos table td:last-child {
+  text-align: right;
+}
+
+.gitlogo {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.gitlogo img {
+  width: 40px;
+}
