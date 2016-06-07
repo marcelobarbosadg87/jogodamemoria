@@ -37,7 +37,6 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
       this.buildFrontCards( function() {
         App.sortItems(function(cards_sorted) {
           App.buildBackCards(cards_sorted);
-          App.endGame();
         });
       });
       this.card_events_listener();
@@ -85,7 +84,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
         new_items.push(itens[i]);
         new_items.push(itens[i]);
       }
-      this.shuffleArray( new_items );
+      //this.shuffleArray( new_items );
       return cb(new_items);
     },
     buildBackCards: function( cards_sorted ) {
@@ -121,10 +120,13 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
           $( this ).attr( 'data-opened', "true" );
           if( $(this).attr('data-match') == "false" ) {
             if( $('[data-opened="true"]').size() == 2  && App.checkCards() ) { //Se n de abertas for 1 e forem iguais
-              alert("Parabéns, você acertou!");
+              App.itsAMatch();
               $( '[data-opened="true"]' ).attr( 'data-match','true' );
               $( '[data-opened="true"]' ).off();
               $( '[data-opened="true"]' ).attr( 'data-opened','none' );
+              if( $('[data-match="true"]').size() == $( '.matriz li' ).size()) {
+                App.winCelebration();
+              }
               return true;
             }
             if( $('[data-opened="true"]').size() == 2 ) {
@@ -135,28 +137,18 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
             if( $('[data-opened="true"]').size() > 2 ) {
               $( this ).flip( false ); $( this ).attr( 'data-opened', "false" );
             }
-
-            if($('[data-opened="true"]').size() == $(li).lenght){
-              alert("Fim do Jogo");
-              
-            }
           }
       });
     },
     checkCards: function() {
       var elements = $( '[data-opened="true"]' );
       return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
-      //if( elements[0] )
     },
+    winCelebration: function() {
 
-    endGame: function () {
-      var elements = $( '[data-opened="true"]' );
-      return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
+    },
+    itsAMatch: function() {
 
-      if (elements == 6) {
-        alert('funciona');
-        console.log('Fim de jogo vc ganhou!');
-      }
     }
   };
 
