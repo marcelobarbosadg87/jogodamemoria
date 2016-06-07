@@ -85,7 +85,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
         new_items.push(itens[i]);
         new_items.push(itens[i]);
       }
-      //this.shuffleArray( new_items );
+      this.shuffleArray( new_items );
       return cb(new_items);
     },
     buildBackCards: function( cards_sorted ) {
