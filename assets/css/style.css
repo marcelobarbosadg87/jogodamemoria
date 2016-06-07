@@ -1,13 +1,10 @@
 body {
   height: 100vh;
-  width: 100vw;
+  width: 98vw;
   overflow-x: hidden;
   background: url('../images/bg.jpg');
   background-repeat: repeat;
 }
-
-
-
 
 .logo {
   width: 40%;
@@ -74,9 +71,45 @@ li {
   width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 0;
+
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 0;
+
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  main {
+    margin: 0 5%;
+    margin-top: 5vh;
+    height: auto;
+    display: table;
+    width: 90%;
+    padding: 1rem;
+
+  }
+}
 @media only screen and (max-width: 425px) {
   main {
-    margin: 0;
+    margin: 0 5%;
     margin-top: 5vh;
     height: auto;
     display: table;
@@ -88,7 +121,7 @@ li {
   .matriz {
     width: 90%;
     height: 13rem;
-    margin: 0 10%;
+    margin: 0 5%;
     display: table;
     background: #f2f0e4;
     border-radius: 1rem;
