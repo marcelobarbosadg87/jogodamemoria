@@ -179,3 +179,57 @@ li {
   border-top: 1px solid #3F5F80;
   font-size: 13px;
 }
+
+.modal-success {
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none ;
+  display: none;
+}
+
+.modal-overlay {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: black;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.modal-overlay-active {
+  opacity: 0.6 !important;
+}
+
+.modal-body {  
+    background: white;
+    z-index: 180 !important;
+    margin: 30px;
+    padding: 20px;
+    position: absolute;
+    top: 30%;
+    font-size: 13px;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    letter-spacing: 1px;
+    left: 0;
+    border-radius: 7px;
+    text-align:center;
+}
+
+a.restart-bt.restart-bt-2 {
+    border-top: 0;
+    display: inline-block;
+    background: #3F5F80;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 20px;
+    pointer-events: all;
+}

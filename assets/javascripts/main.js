@@ -85,7 +85,7 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
         new_items.push(itens[i]);
         new_items.push(itens[i]);
       }
-      this.shuffleArray( new_items );
+      //this.shuffleArray( new_items );
       return cb(new_items);
     },
     buildBackCards: function( cards_sorted ) {
@@ -148,13 +148,19 @@ a ela, exibe na tela "Você Ganhou" e o Botão, Jogar Novamente.
       return $( elements[0] ).find( 'img' ).attr('src') == $( elements[1] ).find( 'img' ).attr('src');
     },
     winCelebration: function() {
-
+        $( '.modal-success' ).show(function() {
+          $( '.modal-success' ).css({opacity:'1'});
+          $( '.modal-overlay' ).addClass( 'modal-overlay-active' );
+        });
     },
     itsAMatch: function() {
 
     },
     restart_bt_listener: function() {
         $( 'body' ).on( 'click', '.restart-bt', function() {
+            $( '.modal-success' ).hide();
+            $( '.modal-success' ).css({opacity:'0'});
+            $( '.modal-overlay' ).removeClass( 'modal-overlay-active' );
             $( ".moves-quantity" ).html( '0' );
             $( '.matriz' ).html('');
             App.init();
